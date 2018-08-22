@@ -1,1 +1,148 @@
+//教程：https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000
+<html>
+<head>
+  <script>
+    alert("Hello,world"); //直接嵌在网页任何地方
+  </script>
+</head>
+
+<html>
+<head>
+  <script src="/static/js/abc.js"></script> //或者JavaScript歹毒放在一个文件里，引用
+</head>
+
+//Chrome->开发者工具->console里面可以编写测试代码
+var x = 100;
+console.log(x);  //就是打印该变量值
+
+123;
+0.156;
+-99;
+NaN;
+Infinity;
+
+//单引号、双引号括起来的任意文本   都是字符串
+
+//布尔值可以用true、false或者直接用   数学式子结果表示
+
+//不要使用“==”，【先自动转换数据类型在比较】而是使用“===”，【不自动转换数据类型】
+
+NaN===NaN   //false
+isNaN(NaN)   //true
+
+Math.abs(1/3 - (1 - 2/3)) < 0.0000001  //浮点数的比较是，比较两个浮点数之间绝对值是否小于某个阈值
+
+var arr = [1,2,3.14,'hello'，null，true]; //数组里面可以包含任何类型的元素
+arr[0];arr[1];arr[6]
+
+new Array();
+
+//对象是一组键-值组成的无序集合
+var person ={                              //person.name 调用属性
+  name:'Bob',
+  age:20,
+  tags:['js','web','mobile'],
+  city:'Beijing',
+  hasCar:true;
+  zipcode:null
+};
+
+var a = 123; //动态语言:变量类型不确定，var用来声明变量的
+a = 'ABC';
+
+//'use strict' 支持strict模式
+
+/*==================================字符串=====================================*/
+console.log(`There             //ES6新语法，支持多行输出 
+long
+char`);
+
+var name = '小明'；
+var age = 20;
+var message = '你好，${name},你今年${age}岁了！';
+alert(message);                        //你好，小明，你今年20岁了
+
+//字符串常用方法，不会改变原有字符串的内容，而是返回一个新的字符串
+toUpperCase();                        //全部变成大写
+toLowerCase();                         //全部变成小写
+indexOf('字符串');                       //搜索字符串出现的指定位置，否则返回-1
+subString();                          //返回指定区间的子串
+
+/*=============================数组================================*/
+//数组方法
+
+indexOf();                          //查找元素位置，不存在返回-1
+slice();                            //截取Array部分元素，slice(0,3) slice(3);
+push();                             //尾后加一个元素
+pop();                              //删除最后一个元素
+unshift();                          //头部添加元素
+shift();                            //第一个元素删掉
+sort();                             //排序，
+reverse();                          //反转
+splice();                           //可以从指定的索引开始删除若干元素，然后再从该位置添加若干元素
+concat();                           //把当前的Array和另一个Array连接起来，返回一个新的Array
+join();                             //每个元素都用指定的字符串连接起来，然后返回连接后的字符串
+
+
+var arr = ['A' , 'B' ,'C',1,2,3];
+arr.join('-');                       // 'A-B-C-1-2-3' 
+                                     // 如果不是字符串，就先转为字符串，在连接
+
+var arr = [1 , 2 , 3 , 4 , 5 , 6];
+arr.splice(2 , 3, 'Google', 'Facebook');  //从arr[2]开始删除3个元素，然后从该位置添加元素，arr[2]也被删除
+
+/*====================================对象===================*/
+in                                        //判断属性是否存在
+'toString' in xiaoming;
+
+hasOwnProperty();                        //判断是否是它自己的属性，而不是继承来的
+xiaoming.hasOwnProperty('name');
+
+xiaoming['middle-school'];                 //获取属性值的方法
+xiaoming['name'];                          //对于不存在属性返回undefind
+xiaoming.name;
+
+
+/*====================================循环=====================*/
+for (var key in arr){
+    console.log(key);
+}
+
+/*=====================================Map和Set=================*/
+//MAP
+var m = new Map([ ['a',1],['b',2],['c',3] ]);
+m.get('a');           //  1
+
+m.set('Adam',67);
+m.has('Adam');
+m.get('Adam');                     // get(Key) 返回 any
+m.delete('Adam');
+
+//Set  存储Key的集合，但是没有重复的key
+var s = new Set([1,2,3,3])            // 自动删除重复元素
+add()                                 //添加
+delete()                              //删除
+
+//针对Map Set Array的循环  .ES6引入iterable类型，
+for ... of
+
+forEach()
+var a = ['A','B','C'];
+a.forEach(function(element,index,array)){
+  //element 指向当前元素的值
+  //index   指向当前索引
+  //array   指向Array对象本身
+}
+
+var s = new Set(['A' , 'B', 'C'])
+s.forEach(function (element, sameElement, set)){
+  console.log(element);
+}
+
+var m = new Map([[1,'x'],[2,'y'],[3,'z']]);
+m.forEach(function (value, key, map)){
+  console.log(value);
+}
+/*================================================快速入门结束===============================================*/
+
 
