@@ -73,4 +73,78 @@ var xiaoming = {
         return y - this.birth;               //this
     }
 }
+ 
+ var xiaoming = {                                           //要保证this指向正确，必须用obj.xxx()形式调用
+    name:'小明',
+    birth:1990,
+    age:function () {
+        var that = this;                                    //捕获this
+        function getAgeFromBirth() {
+            var y = new Date().getFullYear();
+            return y - that.birth;
+   }
+     return getAgeFromBirth();
+}
+};
+
+function getAge() {                                                              //指定函数的this指向哪个对象，可以用函数本身的apply方法，
+    var y = new Date().getFullYear();
+    return y - this.birth;
+}
+
+var xiaoming = {
+    name:'小明',
+    birth:1990,
+    age:getAge
+};
+
+xiaoming.age();                                                                  //25
+getAge.apply(xiaoming , []);                                                     //this 指向 xiaoming  参数    
+                                                                                //apply有两个参数（this变量，函数本身的参数，Array存储）
+
+//apply对普通函数的调用
+Math.max.apply(null , [3,5,4]);                                                 // this 绑定 null，表示普通调用 
+Math.max.call(null , 3 , 5 , 4);                                                //
+
+//=======================================================高阶函数===========================//
+function add(x , y , f){                               //函数接受函数为变量
+    return f(x) + f(y);
+}
+
+function pow(x) {                                     //array里面的map函数，就是可以接受pow函数
+    return x*x;
+}
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var results = arr.map(pow);                           //
+arr.map(String);                                      //将所有数字变成字符串
+
+function product(arr) {                              
+    return arr.reduce(function (x,y){                //reduce,对数组里面数字进行累积操作
+        return x * y;
+    });
+}
+
+[1,2,3].map(parseInt)                              //map和parseInt在一起有问题
+
+arr.fliter(function x)                             //filter 滤过  通过true和false来返回函数的。
+
+sort()                                             // 默认 x < y 返回-1 ； x > y 返回1； x==y 返回 0；sort会对array直接修改
+                                                   
+/*============================================函数作为返回值======================================================*/
+function lazy_sum(arr) {                            //闭包
+    var sum = function () {                         //返回的是求和函数
+        return arr.reduce(function (x,y){
+            return x + y;    
+        });
+    }
+    return sum;
+}
+var f = lazy_sum([1,2,3,4,5]);
+f();                                                 // 15
+
+//箭头函数
+//generator
+
+
+
 
