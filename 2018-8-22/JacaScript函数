@@ -1,1 +1,76 @@
-//
+//函数定义
+
+function abs(x) {                         // 函数定义1
+    ...
+    return x;
+}
+
+function abs = function (x){              // 函数定义2  匿名函数  abs为变量
+    ...
+    return x;
+};
+
+                                          //调用函数
+arguments                                 //判断函数传入的参数个数
+rest                                      //
+
+function foo (...rest){                   //不管多少参数，都自动存入rest数组中
+
+}
+
+//变量提升  ，先将所有声明的变量“提升”到函数顶部
+function foo(){
+    var                                    //声明所有用到的变量
+        x = 1;
+        y = x + 1;
+        z,i;
+    for (i = 0; i < 100;i++){
+        ...
+    }
+}
+
+//全局作用域  ，不在任何函数内定义的变量就具有全局作用域。默认绑定到全局对象windows上
+
+alert();      //就是window的一个变量
+window.alert('A');
+
+
+//名字空间   全局变量会绑定到window上，不同的js文件会有冲突，可以把自己所有变量和函数全部绑定到一个全局变量中。
+//          许多著名的JavaScript库就是怎么干的，比如jQuery
+var MYAPP = {};
+MYAPP.name = '';
+MYAPP.verison = 1.0;
+
+MYAPP.foo = function(){
+
+};
+
+//局部作用域  需要使用let去声明，一个块级作用域  【ES6】
+for(let i =0 ; i < 100 ; i++){
+    sum += i;
+}
+
+//常量 const定义常量，和let都具有块级作用域  【ES6】
+const PI = 3.14；
+
+//解构赋值                                   【ES6】
+var[x , y , z] = ['hello' , 'java' , 'es6'];
+
+var person = {};                              //从某个对象中快速获取对象指定属性
+var {name  , age , passport} = person;        //name,age,passport分别被赋值为对应属性
+
+var {hostname:domain , pathname:path} = location; // 快速获得当前页面的域名和路径。hostname赋值给domain，pathname赋值给path
+
+buildDate（{year:2017,month:1,day:1}）      //函数解构赋值
+
+
+//==============================超级大坑，this指向谁=======================================//
+var xiaoming = {
+    name:'小明',
+    birth:1990,
+    age: function () {
+        var y = new Date().getFullYear();
+        return y - this.birth;               //this
+    }
+}
+
