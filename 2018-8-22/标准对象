@@ -1,0 +1,55 @@
+/*========================================= Date =====================================*/
+
+
+
+
+/*========================================= RegExp =====================================*/
+var re1 = /ABC\-001/;                            //正则表达式
+re.test('010-12345');
+
+
+/*========================================= JSON =====================================*/
+number                    // 
+boolean                   //
+string                    //
+null                      //
+array                     //
+object                    //
+
+var xiaoming = {
+    name:'小明',
+    age:14,
+    gender:true,
+    height:1.65,
+    grade: null,
+    'middle-school':'\"W3C\" Middle School',
+    skills : ['javaScript','Java','Python','Lisp']
+};
+var s = JSON.stringify(xiaoming);             //把小明这个对象序列化成JSON格式的字符串
+
+JSON.stringify(xiaoming , null , ' ');
+JSON.stringify(xiaoming , ['name','skills'] , ' ');
+JSON.stringify(xiaoming , convert , ' ');             //convert是处理函数
+
+var xiaoming = {
+    name:'小明',
+    age:14,
+    gender:true,
+    height:1.65,
+    grade: null,
+    'middle-school':'\"W3C\" Middle School',
+    skills : ['javaScript','Java','Python','Lisp']
+    
+    toJSON : function () {                       
+         return {                                 // 只输出name 和 age, 并且改变key
+            'Name':this.name,
+            'Age':this.age
+         };
+    }
+};
+JSON.stringify(xiaoming);                         //{"Name":"" ,"Age:14}
+
+JSON.parse('[1,2,3,true]'); // [1, 2, 3, true]    //拿到一个JSON格式的字符串，我们直接用JSON.parse()把它变成一个JavaScript对象：
+JSON.parse('{"name":"小明","age":14}');            // Object {name: '小明', age: 14}
+JSON.parse('true'); // true
+JSON.parse('123.45'); // 123.45
