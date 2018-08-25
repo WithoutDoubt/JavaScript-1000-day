@@ -1,0 +1,5 @@
+1) what is DOM:
+    Document Object Model：通过JavaScript可以重构整个HTML文档模型
+    HTML中的<head><body>都是以树的结构处理 
+
+2）jQuery把所有功能全部封装在一个全局变量jQuery中，而 $ 就是jQuery的别名：
